@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         btnResult.setOnClickListener{ btnResultClicked() }
 
         btnC.setOnClickListener {
-            calc.botonLimpiarC(this)
+            calc.botonLimpiarC()
             if (calc.primerNum) {
                 muestraValor(calc.numTemp1, calc.numTemp1)
             } else {
@@ -111,7 +111,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Método btnNumClicked que se llama cuando se pulsa un botón de número.
      * Introduce un nuevo dígito en el número actual y actualiza la pantalla.
-     * Establece controlC en false para indicar que se está introduciendo un nuevo número después de realizar una operación.
      *
      * @param num dígito pulsado del 0 al 9 o punto decimal (10)
      */
@@ -202,7 +201,6 @@ class MainActivity : AppCompatActivity() {
     /**
      * Método btnResultClicked que se llama cuando se pulsa el botón "=".
      * Realiza la operación, muestra el resultado y reinicia los valores necesarios.
-     * Establece controlC en true para indicar que se ha realizado una operación.
      */
     private fun btnResultClicked(){
         if (!calc.primerNum && calc.numTemp2 != ""){
@@ -210,7 +208,6 @@ class MainActivity : AppCompatActivity() {
             calc.calcular()
             muestraValor(df.format(calc.result).toString(), df.format(calc.num1).toString() + calc.operadorTxt() + df.format(calc.num2).toString() + "=" + df.format(calc.result).toString())
             calc.iniValores(resetNumCalculos = false, resetResult = false)
-            calc.controlC = true
         }
         else {
             mensajeError("Debe introducir 2 números y una operación para mostrar un resultado")
@@ -236,7 +233,7 @@ class MainActivity : AppCompatActivity() {
      *
      * @msj mensaje de error
      */
-    fun mensajeError(msj: String) {
+    private fun mensajeError(msj: String) {
         Toast.makeText(this, msj, Toast.LENGTH_SHORT).show()
     }
 }

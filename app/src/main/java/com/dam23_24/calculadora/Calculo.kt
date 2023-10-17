@@ -22,7 +22,7 @@ class Calculo {
      * Variable booleana que indica si se ha mostrado un resultado.
      * Se establece en true cuando se muestra un resultado y en false cuando se introduce un nuevo dígito o una nueva operación.
      */
-    var controlC : Boolean = false
+    // var controlC : Boolean = false
     /**
      * Realiza la llamada al método adecuado para realizar el cálculo solicitado en la calculadora.
      */
@@ -34,7 +34,7 @@ class Calculo {
             3 -> this.divide()
         }
         this.numCalculos += 1
-        this.controlC = true
+       // this.controlC = true
     }
 
     /**
@@ -104,7 +104,7 @@ class Calculo {
     fun tecleaDigito(num : Int) {
         //Si es menor que 10, se trata de un dígito del 0 al 9.
         //Sino, es el punto decimal.
-        this.controlC = false
+        // this.controlC = false
         if (num < 10){
             if (this.primerNum) this.numTemp1 += num.toString()
             else this.numTemp2 += num.toString()
@@ -142,34 +142,29 @@ class Calculo {
     }
 
     /**
-     * Esta función se encarga de borrar el último número introducido en la calculadora.
-     * Si no hay más dígitos para borrar, muestra un mensaje de error.
-     *
-     * @param mainActivity La instancia de MainActivity necesaria para llamar a la función 'mensajeError'.
+     * Método botonLimpiarC que se llama cuando se pulsa el botón C.
+     * Borra los dígitos uno a uno del número actual.
+     * Si no hay más dígitos para borrar, borra la operación.
+     * Si no hay operación para borrar, borra los dígitos del primer número.
      */
-    fun botonLimpiarC(mainActivity: MainActivity) {
-        if (controlC) {
-            mainActivity.mensajeError("Error: Ya se realizó el cálculo, no hay nada para borrar.")
+    fun botonLimpiarC() {
+        if (primerNum) {
+            if (numTemp1.isNotEmpty()) {
+                numTemp1 = numTemp1.dropLast(1)
+                num1 = if (numTemp1.isEmpty()) 0f else numTemp1.toFloat()
+            }
         } else {
-            if (primerNum) {
-                if (numTemp1.isNotEmpty()) {
-                    numTemp1 = ""
-                    num1 = 0f
-                } else {
-                    mainActivity.mensajeError("Error: No hay dígitos en el primer número para borrar.")
-                }
-            } else {
-                if (numTemp2.isNotEmpty()) {
-                    numTemp2 = ""
-                    num2 = 0f
-                } else if (operacionRecienIntroducida) {
-                    mainActivity.mensajeError("Error: Acabas de introducir la operación, no hay nada para borrar.")
-                    operacionRecienIntroducida = false
-                } else {
-                    mainActivity.mensajeError("Error: No hay dígitos en el segundo número para borrar.")
-                }
+            if (numTemp2.isNotEmpty()) {
+                numTemp2 = numTemp2.dropLast(1)
+                num2 = if (numTemp2.isEmpty()) 0f else numTemp2.toFloat()
+            } else if (!operacionRecienIntroducida) {
+                operacionRecienIntroducida = true
+            } else if (numTemp1.isNotEmpty()) {
+                operacionRecienIntroducida = false
+                primerNum = true
             }
         }
     }
 
-    }
+}
+
