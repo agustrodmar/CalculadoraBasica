@@ -124,8 +124,8 @@
 
     <LinearLayout
         android:id="@+id/linLayout3"
-        android:layout_width="365dp"
-        android:layout_height="76dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,16 +156,21 @@
             android:text="@string/txt_btnDec"
             android:textSize="32sp" />
 
-        <LinearLayout
-            android:layout_width=""
-            android:layout_height=""
+
+        <Button
+            android:id="@+id/btnCE"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/txt_btnCE"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linLayout4"
-        android:layout_width="365dp"
-        android:layout_height="168dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@id/linLayout3"
@@ -239,31 +244,14 @@
                 android:text="@string/txt_btnResult"
                 android:textSize="40dp" />
 
-            <Button
-                android:id="@+id/btnC"
-                android:layout_width="78dp"
-                android:layout_height="85dp"
-                android:text="@string/btnC"
-                android:textSize="32sp" />
-
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linLayout4_col4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@id/linLayout4_col2"
-            app:layout_constraintTop_toBottomOf="@id/linLayout3">
-
-            <Button
-                android:id="@+id/btnCE"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
-                android:text="@string/txt_btnCE"
-                android:textSize="20sp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnC"
+            android:layout_width="78dp"
+            android:layout_height="72dp"
+            android:text="@string/btnC"
+            android:textSize="32sp" />
 
     </LinearLayout>
 
