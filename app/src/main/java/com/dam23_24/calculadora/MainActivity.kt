@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
         // Creo mi objeto de tipo Calculo.
         calc = Calculo()
 
-        //Inicializamos las variables que corresponderán a cada componente y les asignamos una función al evento que se programa de cada uno.
+        //Inicializo las variables que corresponderán a cada componente y les asignamos una función al evento que se programa de cada uno.
         initComponents()
         initListeners()
     }
 
     /**
-     * Inicializar las variables que se asignarán a cada componente que vamos a controlar.
+     * Inicializo las variables que se asignarán a cada componente que vamos a controlar.
      */
     private fun initComponents(){
         txtPantalla = findViewById(R.id.txtPantalla)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Establecer las variables del ArraList btnNum que controlarán los dígitos y el punto decimal.
+     * Establezco las variables del ArraList btnNum que controlarán los dígitos y el punto decimal.
      */
     private fun initBtnNum(){
         btnNum = ArrayList()
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Establecer las variables del ArraList btnOper que controlarán los operadores del cálculo.
+     * Establezco las variables del ArraList btnOper que controlarán los operadores del cálculo.
      */
     private fun initBtnOper(){
         btnOper = ArrayList()
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Establecer los eventos y las funciones asociadas de cada componente que vamos a controlar.
+     * Establezco los eventos y las funciones asociadas de cada componente que vamos a controlar.
      */
     private fun initListeners(){
         for (i in 0..<btnNum.count()){
@@ -165,13 +165,13 @@ class MainActivity : AppCompatActivity() {
             //Si se introduce una operación y aún no existe el segundo número la nueva operación debe reemplazar la operación anterior.
 
             calc.op = num
-            //Mostramos en pantalla la actualización del operador.
+            //Muestro en pantalla la actualización del operador.
             muestraValor(calc.operadorTxt(), calc.numTemp1 + calc.operadorTxt())
         }
         else {
-            //Tratamiento de la operación cuando estamos introduciendo el segundo número.
+            //Tratamiento de la operación cuando se introduce el segundo número.
 
-            //Convertimos la cadena de dígitos en el número 2 y realizamos el cálculo.
+            //Convierto la cadena de dígitos en el número 2 y realizo el cálculo.
             //Si existe algún problema en la conversión la controlamos asignando el valor 0.
             calc.num2 = try { calc.numTemp2.toFloat() } catch (e: NumberFormatException) { 0f }
             calc.calcular()
