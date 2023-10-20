@@ -12,16 +12,16 @@ class Calculo {
     var numTemp1: String = ""
     var numTemp2: String = ""
     var numCalculos: Int = 0
-    /**
-     * Variable para rastrear si se acaba de introducir una operación.
-     * Se establece en 'true' cuando se introduce una operación y se restablece en 'false' cuando se introduce un número.
-     */
+    
+    // Variable para rastrear si se acaba de introducir una operación.
+    // Se establece en 'true' cuando se introduce una operación y se restablece en 'false' cuando se introduce un número.
+     
     var operacionRecienIntroducida: Boolean = false
 
-    /**
-     * Variable booleana que indica si se ha mostrado un resultado.
-     * Se establece en true cuando se muestra un resultado y en false cuando se introduce un nuevo dígito o una nueva operación.
-     */
+    //
+    // Variable booleana que indica si se ha mostrado un resultado.
+    // Se establece en true cuando se muestra un resultado y en false cuando se introduce un nuevo dígito o una nueva operación.
+    
     var controlC : Boolean = false
     /**
      * Realiza la llamada al método adecuado para realizar el cálculo solicitado en la calculadora.
